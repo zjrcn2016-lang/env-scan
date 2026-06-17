@@ -39,7 +39,7 @@ function report(result, format) {
 function reportTerminal(result) {
     // Header
     console.log('');
-    console.log(chalk_1.default.bold.white('🔍 EnvGuard v1.0.0'));
+    console.log(chalk_1.default.bold.white('env-scan v1.0.0'));
     console.log(chalk_1.default.dim(`   Scanned ${result.stats.totalFiles} files `) +
         chalk_1.default.dim(`(${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`));
     if (result.findings.length === 0) {
@@ -97,7 +97,7 @@ function reportJson(result) {
 }
 // ─── Markdown ──────────────────────────────────────────────
 function reportMarkdown(result) {
-    console.log('# 🔍 EnvGuard Scan Report');
+    console.log('# env-scan Report');
     console.log('');
     console.log(`**Files scanned:** ${result.stats.totalFiles} (${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`);
     console.log('');

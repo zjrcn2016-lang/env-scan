@@ -1,10 +1,11 @@
 {
-  "name": "envguard",
-  "version": "1.0.0",
+  "name": "@sako2026/env-scan",
+  "version": "1.0.1",
   "description": "Security linter for .env files — catch leaked secrets, missing variables, and env drift",
   "main": "dist/index.js",
   "bin": {
-    "envguard": "./dist/index.js"
+    "envguard": "dist/index.js",
+    "env-scan": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

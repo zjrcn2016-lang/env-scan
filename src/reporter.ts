@@ -37,7 +37,7 @@ export function report(result: ScanResult, format: 'terminal' | 'json' | 'markdo
 function reportTerminal(result: ScanResult): number {
   // Header
   console.log('');
-  console.log(chalk.bold.white('🔍 EnvGuard v1.0.0'));
+  console.log(chalk.bold.white('env-scan v1.0.0'));
   console.log(
     chalk.dim(`   Scanned ${result.stats.totalFiles} files `) +
     chalk.dim(`(${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`)
@@ -110,7 +110,7 @@ function reportJson(result: ScanResult): number {
 // ─── Markdown ──────────────────────────────────────────────
 
 function reportMarkdown(result: ScanResult): number {
-  console.log('# 🔍 EnvGuard Scan Report');
+  console.log('# env-scan Report');
   console.log('');
   console.log(`**Files scanned:** ${result.stats.totalFiles} (${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`);
   console.log('');

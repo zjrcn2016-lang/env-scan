@@ -1,4 +1,4 @@
-# EnvGuard
+# env-scan
 
 > A small CLI tool to catch leaked secrets, missing env vars, and .env drift.
 
@@ -24,9 +24,9 @@ Scans your project for common .env problems:
 ## Quick Start
 
 ```bash
-npx envguard                        # Run in any project directory
-npm install -g envguard              # Or install globally
-envguard
+npx env-scan                        # Run in any project directory
+npm install -g env-scan              # Or install globally
+env-scan
 ```
 
 No config file. No setup. Just run it.
@@ -36,7 +36,7 @@ No config file. No setup. Just run it.
 ## Example Output
 
 ```
-EnvGuard v1.0.0
+env-scan v1.0.0
    Scanned 47 files (3 env, 44 source)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -122,19 +122,19 @@ Detects random-looking strings (entropy > 4.5) that don't match known formats �
 ## CLI Reference
 
 ```bash
-envguard [directory]                 # Scan directory (default: current)
-envguard --secrets                   # Only check for hardcoded secrets
-envguard --git-exposed               # Only check git tracking
-envguard --missing                   # Only check missing vars
-envguard --unused                    # Only check unused vars
-envguard --drift                     # Only check .env/.env.example drift
-envguard --format json               # JSON output (for CI/CD)
-envguard --format markdown           # Markdown report
-envguard --severity high             # Only show high severity and above
-envguard --no-ignore                 # Don't respect .gitignore
-envguard --install-hook              # Install git pre-commit hook
-envguard --uninstall-hook            # Remove git pre-commit hook
-envguard --strict                    # Treat all issues as blocking
+env-scan [directory]                 # Scan directory (default: current)
+env-scan --secrets                   # Only check for hardcoded secrets
+env-scan --git-exposed               # Only check git tracking
+env-scan --missing                   # Only check missing vars
+env-scan --unused                    # Only check unused vars
+env-scan --drift                     # Only check .env/.env.example drift
+env-scan --format json               # JSON output (for CI/CD)
+env-scan --format markdown           # Markdown report
+env-scan --severity high             # Only show high severity and above
+env-scan --no-ignore                 # Don't respect .gitignore
+env-scan --install-hook              # Install git pre-commit hook
+env-scan --uninstall-hook            # Remove git pre-commit hook
+env-scan --strict                    # Treat all issues as blocking
 ```
 
 ---
@@ -144,28 +144,28 @@ envguard --strict                    # Treat all issues as blocking
 Block commits that leak secrets:
 
 ```bash
-npx envguard --install-hook          # Install
-git commit -m "update"               # EnvGuard runs automatically
+npx env-scan --install-hook          # Install
+git commit -m "update"               # env-scan runs automatically
 SKIP_ENVGUARD=1 git commit -m "..."  # Skip if needed
-npx envguard --install-hook --strict # Strict mode
+npx env-scan --install-hook --strict # Strict mode
 ```
 
-The hook runs `envguard --format json` before each commit and blocks if critical/high issues are found.
+The hook runs `env-scan --format json` before each commit and blocks if critical/high issues are found.
 
 ---
 
 ## CI/CD Integration
 
 ```yaml
-# .github/workflows/envguard.yml
-name: EnvGuard
+# .github/workflows/env-scan.yml
+name: env-scan
 on: [push, pull_request]
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npx envguard --format json --severity high
+      - run: npx env-scan --format json --severity high
 ```
 
 JSON output works well for CI pipelines — parse it, send alerts, block merges, etc.
@@ -175,9 +175,9 @@ JSON output works well for CI pipelines — parse it, send alerts, block merges,
 ## Installation
 
 ```bash
-npx envguard                        # One-off (no install needed)
-npm install -g envguard              # Global install
-npm install --save-dev envguard       # Local dev dependency
+npx env-scan                        # One-off (no install needed)
+npm install -g env-scan              # Global install
+npm install --save-dev env-scan       # Local dev dependency
 ```
 
 **Requirements:** Node.js >= 18. Only 3 dependencies. Package size < 100KB.
@@ -187,8 +187,8 @@ npm install --save-dev envguard       # Local dev dependency
 ## Development
 
 ```bash
-git clone https://github.com/your-username/envguard.git
-cd envguard
+git clone https://github.com/your-username/env-scan.git
+cd env-scan
 npm install
 npm run build                       # Compile TypeScript
 node dist/index.js                  # Run from source

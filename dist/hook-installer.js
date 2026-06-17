@@ -37,9 +37,9 @@ exports.installHook = installHook;
 exports.uninstallHook = uninstallHook;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
-const HOOK_MARKER = '# Installed by EnvGuard';
+const HOOK_MARKER = '# Installed by env-scan';
 /**
- * Install a pre-commit git hook that runs envguard before each commit.
+ * Install a pre-commit git hook that runs env-scan before each commit.
  */
 function installHook(projectDir, strict = false) {
     const gitDir = path.join(projectDir, '.git');
@@ -56,7 +56,7 @@ function installHook(projectDir, strict = false) {
     if (fs.existsSync(hookPath)) {
         existingContent = fs.readFileSync(hookPath, 'utf-8');
         if (existingContent.includes(HOOK_MARKER)) {
-            return 'EnvGuard hook is already installed.';
+            return 'env-scan hook is already installed.';
         }
         // Backup existing hook
         fs.writeFileSync(hookPath + '.backup', existingContent, { mode: 0o755 });
@@ -64,39 +64,39 @@ function installHook(projectDir, strict = false) {
     const strictFlag = strict ? ' --strict' : '';
     const hookScript = `#!/usr/bin/env bash
 ${HOOK_MARKER}
-# Run EnvGuard before each commit
-# To uninstall: npx envguard --uninstall-hook
-# To skip this check: set SKIP_ENVGUARD=1
+# Run env-scan before each commit
+# To uninstall: npx env-scan --uninstall-hook
+# To skip this check: set SKIP_ENVSCAN=1
 
-if [ "$SKIP_ENVGUARD" = "1" ]; then
-    echo "⚠️  EnvGuard check skipped (SKIP_ENVGUARD=1)"
+if [ "$SKIP_ENVSCAN" = "1" ]; then
+    echo "⚠️  env-scan check skipped (SKIP_ENVSCAN=1)"
     exit 0
 fi
 
-echo "🔍 EnvGuard: scanning for secrets and env issues..."
-RESULT=$(npx envguard --format json${strictFlag} 2>&1)
+echo "🔍 env-scan: scanning for secrets and env issues..."
+RESULT=$(npx env-scan --format json${strictFlag} 2>&1)
 EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "❌ EnvGuard found critical issues"
+    echo "❌ env-scan found critical issues"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
-    echo "$RESULT" | npx envguard --format terminal 2>/dev/null || echo "$RESULT"
+    echo "$RESULT" | npx env-scan --format terminal 2>/dev/null || echo "$RESULT"
     echo ""
-    echo "Commit blocked. Fix the issues above or use SKIP_ENVGUARD=1 to bypass."
+    echo "Commit blocked. Fix the issues above or use SKIP_ENVSCAN=1 to bypass."
     exit 1
 fi
 
-echo "✅ EnvGuard: no issues found"
+echo "✅ env-scan: no issues found"
 ${existingContent ? `\n# Original pre-commit hook:\n${existingContent}` : ''}
 `;
     fs.writeFileSync(hookPath, hookScript, { mode: 0o755 });
-    return `✓ Git pre-commit hook installed at ${hookPath}\n  Run 'git commit' as usual — EnvGuard will scan automatically.${strict ? '\n  Strict mode: medium/low issues will also block commits.' : ''}`;
+    return `✓ Git pre-commit hook installed at ${hookPath}\n  Run 'git commit' as usual — env-scan will scan automatically.${strict ? '\n  Strict mode: medium/low issues will also block commits.' : ''}`;
 }
 /**
- * Uninstall the EnvGuard pre-commit hook.
+ * Uninstall the env-scan pre-commit hook.
  */
 function uninstallHook(projectDir) {
     const hookPath = path.join(projectDir, '.git', 'hooks', 'pre-commit');
@@ -105,7 +105,7 @@ function uninstallHook(projectDir) {
     }
     const content = fs.readFileSync(hookPath, 'utf-8');
     if (!content.includes(HOOK_MARKER)) {
-        return 'The existing pre-commit hook was not installed by EnvGuard. Remove it manually if needed.';
+        return 'The existing pre-commit hook was not installed by env-scan. Remove it manually if needed.';
     }
     // Check for backup
     const backupPath = hookPath + '.backup';
@@ -116,6 +116,6 @@ function uninstallHook(projectDir) {
     else {
         fs.unlinkSync(hookPath);
     }
-    return '✓ EnvGuard hook uninstalled. Original hook restored if backup existed.';
+    return '✓ env-scan hook uninstalled. Original hook restored if backup existed.';
 }
 //# sourceMappingURL=hook-installer.js.map

@@ -23,8 +23,8 @@ import {
 const program = new Command();
 
 program
-  .name('envguard')
-  .description('🔍 Security linter for .env files — catch leaked secrets, missing variables, and env drift')
+  .name('env-scan')
+  .description('Security linter for .env files — catch leaked secrets, missing variables, and env drift')
   .version('1.0.0')
   .argument('[directory]', 'Target directory to scan', '.')
   .option('-a, --all', 'Run all checks (default)')

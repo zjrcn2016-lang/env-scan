@@ -1,6 +1,6 @@
 {
   "name": "@sako2026/env-scan",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Security linter for .env files — catch leaked secrets, missing variables, and env drift",
   "main": "dist/index.js",
   "bin": {

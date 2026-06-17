@@ -72,6 +72,11 @@ function isFalsePositive(str) {
     if (/^https?:\/\//i.test(str)) {
         return true;
     }
+    // SRI integrity hashes (npm package-lock.json, etc.)
+    // e.g. "sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr..."
+    if (/^sha(?:1|256|384|512)-[A-Za-z0-9+/=]{32,}$/.test(str)) {
+        return true;
+    }
     // Natural language text — real secrets (API keys, tokens, passwords)
     // never contain spaces. If the string has any spaces at all, it's a message,
     // log line, SQL query, HTML/JSON snippet, stack trace, etc.

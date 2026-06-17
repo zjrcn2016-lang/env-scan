@@ -1,0 +1,35 @@
+{
+  "name": "envguard",
+  "version": "1.0.0",
+  "description": "Security linter for .env files — catch leaked secrets, missing variables, and env drift",
+  "main": "dist/index.js",
+  "bin": {
+    "envguard": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "env",
+    "security",
+    "lint",
+    "secrets",
+    "dotenv",
+    "environment",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^15.0.0",
+    "ignore": "^7.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3"
+  }
+}

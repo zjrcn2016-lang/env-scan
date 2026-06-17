@@ -40,36 +40,36 @@ env-scan v1.0.0
    Scanned 47 files (3 env, 44 source)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  CRITICAL (2)
+  🔴 CRITICAL (2)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  [git-exposure] .env is tracked by git
+  ❌  [git-exposure] .env is tracked by git
   └─ .env
-     Run: git rm --cached .env && echo ".env" >> .gitignore
+     💡 Run: git rm --cached .env && echo ".env" >> .gitignore
 
-  [secret-leak] Stripe Live Key exposed: sk_l...o345
+  ❌  [secret-leak] Stripe Live Key exposed: sk_l...o345
   └─ src/payment.ts:23
-     Use Stripe test keys for development. Rotate this live key now.
+     💡 Use Stripe test keys for development. Rotate this live key now.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  HIGH (3)
+  🟠 HIGH (3)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  [secret-leak] GitHub Personal Access Token exposed
+  ⚠️   [secret-leak] GitHub Personal Access Token exposed
   └─ src/config.ts:15
-     Revoke at github.com/settings/tokens.
+     💡 Revoke at github.com/settings/tokens.
 
-  [secret-leak] OpenAI API Key exposed: sk-...b1f4
+  ⚠️   [secret-leak] OpenAI API Key exposed: sk-...b1f4
   └─ src/ai.ts:42
-     Rotate at platform.openai.com/api-keys.
+     💡 Rotate at platform.openai.com/api-keys.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  MEDIUM (2)
+  🟡 MEDIUM (2)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  [missing-vars] SECRET_KEY is in .env.example but missing from .env
-  [missing-vars] REDIS_URL is in .env.example but missing from .env
+  ○  [missing-vars] SECRET_KEY is in .env.example but missing from .env
+  ○  [missing-vars] REDIS_URL is in .env.example but missing from .env
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Summary: 2 critical · 3 high · 2 medium · 0 low
+  📊 Summary: 🔴 2 critical · 🟠 3 high · 🟡 2 medium · 🟢 0 low
 ```
 
 ---

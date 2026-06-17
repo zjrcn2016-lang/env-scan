@@ -37,7 +37,7 @@ export function report(result: ScanResult, format: 'terminal' | 'json' | 'markdo
 function reportTerminal(result: ScanResult): number {
   // Header
   console.log('');
-  console.log(chalk.bold.white('env-scan v1.0.0'));
+  console.log(chalk.bold.white('env-scan v1.0.2'));
   console.log(
     chalk.dim(`   Scanned ${result.stats.totalFiles} files `) +
     chalk.dim(`(${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`)

@@ -39,7 +39,7 @@ function report(result, format) {
 function reportTerminal(result) {
     // Header
     console.log('');
-    console.log(chalk_1.default.bold.white('env-scan v1.0.0'));
+    console.log(chalk_1.default.bold.white('env-scan v1.0.2'));
     console.log(chalk_1.default.dim(`   Scanned ${result.stats.totalFiles} files `) +
         chalk_1.default.dim(`(${result.stats.envFiles.length} env, ${result.stats.sourceFiles} source)`));
     if (result.findings.length === 0) {

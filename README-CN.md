@@ -36,7 +36,7 @@ env-scan
 ## 运行效果
 
 ```
-env-scan v1.0.0
+env-scan v1.0.2
    Scanned 47 files (3 env, 44 source)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

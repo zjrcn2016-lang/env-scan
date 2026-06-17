@@ -24,7 +24,7 @@ Scans your project for common .env problems:
 ## Quick Start
 
 ```bash
-npx env-scan                        # Run in any project directory
+npx @sako2026/env-scan                        # Run in any project directory
 npm install -g env-scan              # Or install globally
 env-scan
 ```
@@ -144,10 +144,10 @@ env-scan --strict                    # Treat all issues as blocking
 Block commits that leak secrets:
 
 ```bash
-npx env-scan --install-hook          # Install
+npx @sako2026/env-scan --install-hook          # Install
 git commit -m "update"               # env-scan runs automatically
 SKIP_ENVGUARD=1 git commit -m "..."  # Skip if needed
-npx env-scan --install-hook --strict # Strict mode
+npx @sako2026/env-scan --install-hook --strict # Strict mode
 ```
 
 The hook runs `env-scan --format json` before each commit and blocks if critical/high issues are found.
@@ -165,7 +165,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npx env-scan --format json --severity high
+      - run: npx @sako2026/env-scan --format json --severity high
 ```
 
 JSON output works well for CI pipelines — parse it, send alerts, block merges, etc.
@@ -175,7 +175,7 @@ JSON output works well for CI pipelines — parse it, send alerts, block merges,
 ## Installation
 
 ```bash
-npx env-scan                        # One-off (no install needed)
+npx @sako2026/env-scan                        # One-off (no install needed)
 npm install -g env-scan              # Global install
 npm install --save-dev env-scan       # Local dev dependency
 ```

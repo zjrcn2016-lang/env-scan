@@ -1,6 +1,6 @@
-# env-scan
+# env-scan (demo)
 
-> 一个小命令行工具，用来检查 .env 相关的常见问题：泄露的密钥、缺失的变量、配置漂移。
+> 一个实验性的命令行工具，用来检查 .env 相关的常见问题。仍在打磨中，可能有误报。
 
 <p align="center">
   <img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen" alt="Node >= 18">

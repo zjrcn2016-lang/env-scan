@@ -1,6 +1,6 @@
-# env-scan
+# env-scan (demo)
 
-> A small CLI tool to catch leaked secrets, missing env vars, and .env drift.
+> An experimental CLI tool to catch leaked secrets, missing env vars, and .env drift. Still polishing — expect rough edges.
 
 <p align="center">
   <img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen" alt="Node >= 18">
